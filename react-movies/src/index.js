@@ -17,6 +17,8 @@ import ThemeContextProvider from "./contexts/ThemeContext";
 import AuthContextProvider from "./contexts/authContext";
 import LoginPage from "./pages/loginPage";
 import ProtectedRoutes from "./protectedRoutes";
+import SignUpPage from "./pages/signUpPage";
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,6 +41,7 @@ const App = () => {
         <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={ <SignUpPage /> } />
         <Route element={<ProtectedRoutes />}>
           <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
           <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
