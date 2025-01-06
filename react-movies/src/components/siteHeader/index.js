@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -14,6 +14,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useThemeContext } from "../../contexts/ThemeContext";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { AuthContext } from "../../contexts/authContext";
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -26,6 +27,8 @@ const SiteHeader = ({ history }) => {
   
   const navigate = useNavigate();
   const { mode, toggleTheme } = useThemeContext();
+
+  const { isAuthenticated, userName, signout } = useContext(AuthContext);
 
   const menuOptions = [
     { label: "Home", path: "/" },
@@ -107,6 +110,18 @@ const SiteHeader = ({ history }) => {
                 ))}
               </>
             )}
+            {isAuthenticated ? (
+            <Typography variant="body1" sx={{ marginLeft: 2 }}>
+              Welcome, {userName}!{" "}
+              <Button color="inherit" onClick={signout}>
+                Sign out
+              </Button>
+            </Typography>
+          ) : (
+            <Button color="inherit" onClick={() => navigate("/login")}>
+              Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
       <Offset />
