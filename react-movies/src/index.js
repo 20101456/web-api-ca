@@ -42,10 +42,10 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={ <SignUpPage /> } />
+        <Route path="/movies/:id" element={<MoviePage />} />
         <Route element={<ProtectedRoutes />}>
           <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
           <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
-          <Route path="/movies/:id" element={<MoviePage />} />
           <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
           <Route path="/movies/upcoming" element={ <UpcomingMoviesPage /> } />
           <Route path="/movies/popular" element={ <PopularMoviesPage /> } />
